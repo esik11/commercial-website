@@ -1,0 +1,110 @@
+{
+  "Office": [
+    {
+      "name": "Basic Office",
+      "price": "₱15,000",
+      "specs": [
+        "Intel i3 / Ryzen 3",
+        "8GB RAM",
+        "256GB SSD",
+        "Integrated Graphics",
+        "Windows 11 Home"
+      ]
+    },
+    {
+      "name": "Standard Office",
+      "price": "₱22,000",
+      "specs": [
+        "Intel i5 / Ryzen 5",
+        "16GB RAM",
+        "512GB SSD",
+        "Integrated Graphics",
+        "Windows 11 Pro"
+      ]
+    },
+    {
+      "name": "Premium Office",
+      "price": "₱28,000",
+      "specs": [
+        "Intel i5 / Ryzen 5",
+        "16GB RAM",
+        "1TB SSD",
+        "Integrated Graphics",
+        "Windows 11 Pro",
+        "WiFi 6"
+      ]
+    }
+  ],
+  "Gaming": [
+    {
+      "name": "Entry Gaming",
+      "price": "₱30,000",
+      "specs": [
+        "Intel i5 / Ryzen 5",
+        "16GB RAM",
+        "GTX 1650 / RX 6500",
+        "512GB SSD",
+        "RGB Cooling"
+      ]
+    },
+    {
+      "name": "Mid-Range Gaming",
+      "price": "₱45,000",
+      "specs": [
+        "Intel i5 / Ryzen 5",
+        "16GB RAM",
+        "RTX 3060 / RX 6600",
+        "1TB SSD",
+        "RGB Case & Fans"
+      ]
+    },
+    {
+      "name": "High-End Gaming",
+      "price": "₱75,000",
+      "specs": [
+        "Intel i7 / Ryzen 7",
+        "32GB RAM",
+        "RTX 4060 Ti / RX 7700",
+        "1TB NVMe SSD",
+        "Full RGB Setup",
+        "Liquid Cooling"
+      ]
+    }
+  ],
+  "Workstation": [
+    {
+      "name": "Content Creation",
+      "price": "₱60,000",
+      "specs": [
+        "Intel i7 / Ryzen 7",
+        "32GB RAM",
+        "GTX 1660 / RX 6600",
+        "1TB NVMe SSD",
+        "Color-accurate monitor"
+      ]
+    },
+    {
+      "name": "Professional Workstation",
+      "price": "₱85,000",
+      "specs": [
+        "Intel i9 / Ryzen 9",
+        "64GB RAM",
+        "RTX 4060 / Professional GPU",
+        "2TB NVMe SSD",
+        "ECC Support"
+      ]
+    },
+    {
+      "name": "Ultimate Workstation",
+      "price": "₱120,000",
+      "specs": [
+        "Intel i9 / Ryzen 9",
+        "128GB RAM",
+        "RTX 4070 Ti / Professional GPU",
+        "4TB NVMe SSD",
+        "Dual Monitor Support",
+        "Advanced Cooling"
+      ]
+    }
+  ]
+}

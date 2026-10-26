@@ -1,0 +1,7 @@
+<?php
+// Copy to config.php (git-ignored) and fill in.
+return [
+  'to_email'   => 'owner@example.com',
+  'from_email' => 'noreply@yourdomain.com',
+  'shop_name'  => 'Your Shop Name',
+];

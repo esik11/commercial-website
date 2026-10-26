@@ -1,0 +1,22 @@
+:root{--bg:#08101F;--panel:#0F1B36;--panel-2:#142447;--line:rgba(255,255,255,.1);--text:#E7EDF8;--muted:#9DB0CF;--red:#E5222B;--blue:#6F8DFF;--green:#7ED13B;--yellow:#FFE31A}
+body{background:var(--bg);color:var(--text);font-family:'Manrope',system-ui,sans-serif}
+a{color:var(--blue)}
+.admin-nav{background:#070E1F;border-bottom:1px solid var(--line)}
+.admin-nav .nav-link{color:#CFD9EA}.admin-nav .nav-link.active{color:#fff;border-bottom:2px solid var(--red)}
+.brand-mark{font-weight:800;font-size:1.25rem;text-decoration:none;color:#fff}
+.brand-mark b:nth-child(1){color:var(--red)}.brand-mark b:nth-child(2){color:var(--blue)}.brand-mark b:nth-child(3){color:var(--green)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:.75rem;padding:1.25rem}
+.stat-tile{background:var(--panel);border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:.5rem;padding:1rem 1.25rem}
+.stat-tile .n{font-size:2rem;font-weight:800;line-height:1}
+.stat-tile.green{border-left-color:var(--green)}.stat-tile.red{border-left-color:var(--red)}.stat-tile.yellow{border-left-color:var(--yellow)}
+.table{--bs-table-bg:transparent;--bs-table-color:var(--text);--bs-table-border-color:var(--line);--bs-table-hover-bg:rgba(255,255,255,.04)}
+.table thead th{color:var(--muted);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.04em}
+.form-control,.form-select{background:var(--panel-2);border-color:var(--line);color:var(--text)}
+.form-control:focus,.form-select:focus{background:var(--panel-2);color:var(--text);border-color:var(--blue);box-shadow:0 0 0 .2rem rgba(111,141,255,.25)}
+.form-label{font-weight:600;font-size:.9rem}.text-muted-2{color:var(--muted)}
+.btn-accent{background:var(--red);border:0;color:#fff;font-weight:600}.btn-accent:hover{background:#C21A22;color:#fff}
+.qty-input{max-width:5.5rem}
+.stock-input{max-width:5rem}
+.preview-box{background:var(--panel-2);border:1px dashed var(--line);border-radius:.5rem;padding:.9rem 1rem}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:1rem}
+.login-card{width:100%;max-width:400px}

@@ -1,0 +1,7 @@
+# Uploaded files are images only: never execute scripts here
+<FilesMatch "\.(php|phtml|phar|pl|py|cgi)$">
+  <IfModule mod_authz_core.c>
+    Require all denied
+  </IfModule>
+</FilesMatch>
+Options -Indexes
