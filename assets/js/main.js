@@ -58,11 +58,32 @@ safe('reveal', () => {
     io.unobserve(en.target);
     en.target.classList.add('in');
     if (en.target.dataset.count) countUp(en.target);
-  }), { threshold: 0.25 });
+  }), { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+  const markVisible = () => {
+    $$('.reveal:not(.in)').forEach(el => {
+      const r = el.getBoundingClientRect();
+      if (r.top < innerHeight * 0.92 && r.bottom > 0) el.classList.add('in');
+    });
+  };
   $$('.reveal,.reveal-image,[data-count]').forEach(el => io.observe(el));
+  markVisible();
+  addEventListener('load', markVisible, { once: true });
+
+  // Stagger children inside revealed rows (subtle polish)
+  $$('.row.g-4').forEach(row => {
+    const ioRow = new IntersectionObserver((entries) => entries.forEach(en => {
+      if (!en.isIntersecting) return;
+      ioRow.unobserve(en.target);
+      [...en.target.children].forEach((child, i) => {
+        if (!child.classList.contains('reveal')) return;
+        child.style.transitionDelay = (i * 0.07) + 's';
+      });
+    }), { threshold: 0.12 });
+    ioRow.observe(row);
+  });
 });
 
-// "Open now" badge, evaluated in Philippine time
+// "Open now" badge + live Gensan/Manila clock
 safe('status', () => {
   const el = $('#openStatus'); if (!el) return;
   const open = +el.dataset.open, close = +el.dataset.close, days = el.dataset.days.split(',').map(Number);
@@ -75,6 +96,31 @@ safe('status', () => {
   el.querySelector('.status-text').textContent = isOpen ? 'Open now, until ' + fmt(close) : 'Closed now, message us anytime';
 });
 
+safe('clock', () => {
+  const el = $('#localClock'); if (!el) return;
+  const tick = () => {
+    el.textContent = new Intl.DateTimeFormat('en-PH', {
+      timeZone: 'Asia/Manila', weekday: 'short', hour: 'numeric', minute: '2-digit', hour12: true
+    }).format(new Date()) + ' · PH';
+  };
+  tick();
+  setInterval(tick, 30000);
+});
+
+// Gentle hero parallax on fine pointers
+safe('parallax', () => {
+  if (reduce || !matchMedia('(pointer:fine)').matches) return;
+  const visual = $('.hero-visual'); if (!visual) return;
+  const hero = $('.hero');
+  hero.addEventListener('mousemove', (e) => {
+    const r = hero.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width - 0.5;
+    const y = (e.clientY - r.top) / r.height - 0.5;
+    visual.style.transform = 'translate(' + (x * 12) + 'px,' + (y * 8) + 'px)';
+  });
+  hero.addEventListener('mouseleave', () => { visual.style.transform = ''; });
+});
+
 // Build planner
 safe('planner', () => {
   const root = $('#planner-widget'); if (!root) return;
@@ -85,6 +131,9 @@ safe('planner', () => {
     res.textContent = b >= m
       ? 'Good news: ' + peso(b) + ' is enough for a solid ' + use.value.toLowerCase() + ' build from our current stock.'
       : use.value + ' builds usually start around ' + peso(m) + '. We can still look for the best option near ' + peso(b) + '.';
+    res.classList.remove('pop-in');
+    void res.offsetWidth;
+    res.classList.add('pop-in');
   };
   use.addEventListener('input', update); range.addEventListener('input', update); update();
   $('#plSend').addEventListener('click', () => {
@@ -127,6 +176,20 @@ safe('ripple', () => $$('.btn-accent').forEach(btn => btn.addEventListener('clic
   btn.appendChild(r);
   setTimeout(() => r.remove(), 600);
 })));
+
+// Subtle pointer tilt on feature cards (desktop only)
+safe('tilt', () => {
+  if (reduce || !matchMedia('(pointer:fine)').matches) return;
+  $$('.tilt-card').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = 'perspective(900px) rotateY(' + (x * 6) + 'deg) rotateX(' + (-y * 6) + 'deg) translateY(-6px)';
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+});
 
 // Quote form
 safe('form', () => {

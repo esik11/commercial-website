@@ -2,3 +2,4 @@ backend/config.php
 storage/*
 !storage/.gitkeep
 .DS_Store
+config/config.php
